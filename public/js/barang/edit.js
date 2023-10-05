@@ -83,9 +83,53 @@ function save(ids){
             hargajual:hargajual,
             stok:stok,
         },
-        success: function(data) {
-            // console.log(data);
-            location.replace(base_url+"/produk");
+        success: function(response) {
+            if(response.error){
+                let data = response.error;
+                if(data.errorname ){
+                    $('#name').addClass('is-invalid');
+                    $('.errorname').html(data.errorname);
+                }
+                else{
+                    $('#name').removeClass('is-invalid');
+                    $('#name').addClass('is-valid');
+                }
+                if(data.errorkategori ){
+                    $('#kategori').addClass('is-invalid');
+                    $('.errorkategori').html(data.errorkategori);
+                }
+                else{
+                    $('#kategori').removeClass('is-invalid');
+                    $('#kategori').addClass('is-valid');
+                }
+                if(data.errorhargabeli ){
+                    $('#hargabeli').addClass('is-invalid');
+                    $('.errorhargabeli').html(data.errorhargabeli);
+                }
+                else{
+                    $('#hargabeli').removeClass('is-invalid');
+                    $('#hargabeli').addClass('is-valid');
+                }
+                if(data.errorhargajual ){
+                    $('#hargajual').addClass('is-invalid');
+                    $('.errorhargajual').html(data.errorhargajual);
+                }
+                else{
+                    $('#hargajual').removeClass('is-invalid');
+                    $('#hargajual').addClass('is-valid');
+                }
+                if(data.errorstok ){
+                    $('#stok').addClass('is-invalid');
+                    $('.errorstok').html(data.errorstok);
+                }
+                else{
+                    $('#stok').removeClass('is-invalid');
+                    $('#stok').addClass('is-valid');
+                }
+        }
+        else if(response.sukses){
+            location.replace(base_url+'/produk');
+        }
         }
     });
 }

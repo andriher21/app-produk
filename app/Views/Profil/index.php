@@ -3,7 +3,7 @@
 <br>
     <div class="row">
         <div class="col">
-            <img class="rounded-circle" width="150px" src="<?= base_url() ?>/img/Frame 98700.png">
+            <img class="rounded-circle" width="150px" src="<?= base_url() ?>/img/Foto.jpg">
         </div>
     </div>
     <div class="row">

@@ -178,17 +178,61 @@ class BarangController extends BaseController
     }
     public function editsave()
     {
-    if(!$this->validate([
-        'name' => 'required',
-        'kategori' => 'required',
-        'hargabeli' => 'required|numeric',
-        'hargajual' => 'required|numeric',
-        'stok' => 'required|numeric',
-        'foto' => 'required',
+    if(!$this->validate(['name' => [
+        'rules'=>'required',
+        'errors'=>[
+            'required' => '{field} tidak boleh kosong',
+        ]
+    ],
+    'kategori' => [
+        'rules'=>'required',
+        'errors'=>[
+            'required' => '{field} harus dipilih',
+        ]
+    ],
+    'hargabeli' => [
+        'rules'=>'required|numeric',
+        'errors'=>[
+            'required' => '{field} tidak boleh kosong',
+            'numeric' => '{field} harus nomor',
+        ]
+    ],
+    'hargajual' => [
+        'rules'=>'required|numeric',
+        'errors'=>[
+            'required' => '{field} tidak boleh kosong',
+            'numeric' => '{field} harus nomor',
+        ]
+    ],
+    'stok' => [
+        'rules'=>'required|numeric',
+        'errors'=>[
+            'required' => '{field} tidak boleh kosong',
+            'numeric' => '{field} harus nomor',
+        ]
+    ],
+    'foto' => [
+        'rules'=>'required',
+        'errors'=>[
+            'required' => '{field} tidak boleh kosong',
+        ]
+    ],
     ])){
         $validation = \Config\Services::validation();
-        $url='/produk/edit';
-        return json_encode($url);
+            $data = [
+                'validation' => $validation
+
+            ];
+            $msg = [
+                'error' =>[
+                    'errorname' => $validation->getError('name'),
+                    'errorkategori' => $validation->getError('kategori'),
+                    'errorhargabeli' => $validation->getError('hargabeli'),
+                    'errorhargajual' => $validation->getError('hargajual'),
+                    'errorstok' => $validation->getError('stok'),
+                ]
+                ];
+            return json_encode($msg);
     }
     else{
         $id = $this->request->getVar('id');
@@ -202,8 +246,12 @@ class BarangController extends BaseController
         );
 
        $update = $this->barang->updateData($id, $data);
-    
-        return json_encode($update);}
+       $msg = [
+        'sukses' =>[
+            'url' => '/produk'
+        ]
+        ];
+    return json_encode($msg);}
     }
     public function delete()
     {

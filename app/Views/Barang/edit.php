@@ -64,24 +64,34 @@ h6.drop-alert {
                                  <option value="<?=$k['nama_kategory'] ?>" <?= $p['kategory_barang'] == $k['nama_kategory']  ? 'selected="true"' : ''; ?>><?=$k['nama_kategory']?></option>
                                  <?php endforeach?>
                              </select>
+                             <div class="invalid-feedback errorkategori">
+                            </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label >Nama Barang</label>
                             <input type="text" class="form-control" id="name" name="name" value="<?= $p['nama_barang']?>" required>  
+                            <div class="invalid-feedback errorname">
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label>Harga Beli</label>
                             <input type="number" class="form-control autofill" name="hargabeli" id="hargabeli" value="<?= $p['harga_beli']?>"   required>
+                            <div class="invalid-feedback errorhargabeli">
+                            </div>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputState">Harga Jual</label>
                             <input type="text" class="form-control " name="hargajual" id="hargajual" value="<?= $p['harga_jual']?>" readonly required>
+                            <div class="invalid-feedback errorhargajual">
+                            </div>
                         </div>
                         <div class="form-group col-md-4">
                             <label >Stok</label>
                             <input type="number" class="form-control" id="stok" name="stok" value="<?= $p['stok_barang']?>" required>
+                            <div class="invalid-feedback errorstok">
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
