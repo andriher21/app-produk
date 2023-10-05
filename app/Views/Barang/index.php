@@ -35,7 +35,7 @@
                             </div>
                             
                         </div>
-                            <div class="col-2><form action="<?= site_url('product/')?>" method="POST" enctype="multipart/form-data" class="form-filter">
+                            <div class="col-2">
                                     <div class="input-group">
                                         <select class="form-control kategori-filter" name="kategori_filter" id="kategori_filter">
                                             <option value="">Semua</option>
@@ -44,10 +44,9 @@
                                         <?php endforeach ?>
                                         </select>
                                     
-                                    </div>
-                                </form> </div>
-                                <div class="col-3"></div>
-                            <div class="col-3">
+                                    </div></div>
+                                <div class="col-2"></div>
+                            <div class="col-4 text-right">
                             <div class="btn-group group-action-area ">
                                 <button class="btn btn-success btn-sm btn-export" id="btn-export"><i class="fas fa-fw  fa-file-export"></i> Export Excel</button>
                                 <a href="<?= base_url('/produk/create')?>"class="btn btn-danger btn-sm"><i class="fas fa-fw fas fa-plus-circle"></i> Tambah Produk</a>
